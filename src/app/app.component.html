@@ -1,0 +1,15 @@
+<div class="chat-bubble-container" [class.open]="isChatOpen">
+  <button (click)="toggleChat()" id="chat-bubble" class="chat-bubble-button">
+    <img *ngIf="!isChatOpen" src="assets/burbuja.png" alt="Chat" />
+    <span *ngIf="isChatOpen">X</span>
+  </button>
+  <div id="chat-container" class="chat-window" *ngIf="isChatOpen">
+    <div class="header">
+      <h1>{{ title }}</h1>
+      <div class="header-buttons">
+        <button class="header-btn close" (click)="closeChat()">X</button>
+      </div>
+    </div>
+    <app-chat></app-chat>
+  </div>
+</div>

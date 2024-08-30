@@ -1,0 +1,7 @@
+<div class="message-container" [ngClass]="{'user': message.sender === 'user', 'bot': message.sender === 'bot'}">
+    <img *ngIf="message.sender === 'bot'" src="assets/avatar2.png" alt="Bot" class="avatar">
+    <div class="message-content">
+      {{ message.content }}
+    </div>
+    <img *ngIf="message.sender === 'user'" src="assets/imagen2.png" alt="User" class="avatar">
+  </div>

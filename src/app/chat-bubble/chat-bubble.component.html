@@ -1,0 +1,7 @@
+<div id="chat-bubble" (click)="toggleChat()" class="chat-bubble-button">
+  <img src="assets/burbuja.png" alt="Chat" />
+</div>
+
+<div id="chat-container" [class.active]="chatVisible">
+  <app-chat></app-chat>
+</div>

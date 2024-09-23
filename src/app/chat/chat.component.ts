@@ -13,7 +13,7 @@ import { MessageComponent } from '../message/message.component';
 export class ChatComponent implements OnInit {
   messages: any[] = [];
   newMessage: string = '';
-  typingSpeed = 90; 
+  typingSpeed = 20; 
 
   ngOnInit() {
    

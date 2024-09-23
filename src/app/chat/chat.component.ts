@@ -13,22 +13,37 @@ import { MessageComponent } from '../message/message.component';
 export class ChatComponent implements OnInit {
   messages: any[] = [];
   newMessage: string = '';
+  typingSpeed = 90; 
 
   ngOnInit() {
-    // Mensaje de bienvenida
-    this.messages.push({ content: '¡Hola! ¿En qué puedo ayudarte?', sender: 'bot' });
+   
+    this.typeMessage('¡Hola! ¿En qué puedo ayudarte?', 'bot');
   }
+
 
   sendMessage() {
     if (this.newMessage.trim()) {
       this.messages.push({ content: this.newMessage, sender: 'user' });
-      
-      // Simular respuesta del bot
+
       setTimeout(() => {
-        this.messages.push({ content: `Has dicho: "${this.newMessage}". ¿En qué más puedo ayudarte?`, sender: 'bot' });
+        this.typeMessage(`Has dicho: "${this.newMessage}". ¿En qué más puedo ayudarte?`, 'bot');
       }, 1000);
 
-      this.newMessage = '';
+      this.newMessage = ''; 
     }
+  }
+  typeMessage(fullMessage: string, sender: string) {
+    let currentIndex = 0;
+    let currentMessage = { content: '', sender: sender };
+    this.messages.push(currentMessage);
+
+    const interval = setInterval(() => {
+      if (currentIndex < fullMessage.length) {
+        currentMessage.content += fullMessage[currentIndex];
+        currentIndex++;
+      } else {
+        clearInterval(interval); 
+      }
+    }, this.typingSpeed);
   }
 }
